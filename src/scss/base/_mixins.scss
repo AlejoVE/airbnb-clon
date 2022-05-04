@@ -1,0 +1,58 @@
+@use 'variables' as v;
+
+/** Media Queries **/
+@mixin phone {
+	@media (min-width: v.$phone) {
+		@content;
+	}
+}
+
+@mixin tablet {
+	@media (min-width: v.$tablet) {
+		@content;
+	}
+}
+
+@mixin desktop {
+	@media (min-width: v.$desktop) {
+		@content;
+	}
+}
+
+@mixin button($bgColor, $textColor) {
+	background-color: $bgColor;
+	padding: 2rem 4rem;
+	color: $textColor;
+	margin-top: 1rem;
+	border-radius: 3rem;
+	font-size: 2rem;
+	font-weight: 700;
+	display: block;
+	transition-duration: 0.3s;
+
+	@include tablet {
+		display: inline-block;
+	}
+
+	&:hover {
+		color: v.$white;
+		background-color: v.$secondary;
+	}
+}
+
+@mixin grid($columns, $gap) {
+	display: grid;
+	gap: $gap;
+	grid-template-columns: repeat($columns, 1fr);
+}
+
+@mixin scrollX {
+	overflow-y: hidden;
+	overflow-x: scroll;
+	scroll-snap-type: x mandatory;
+
+	// This mean fist child, the * is so select any kind of child (element, class, etc)
+	> * {
+		scroll-snap-align: center;
+	}
+}

@@ -1,0 +1,27 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.locations {
+	&__grid {
+		display: grid;
+		grid-template-columns: repeat(4, 20rem);
+		gap: 3rem;
+		@include m.scrollX;
+		@include m.tablet {
+			@include m.grid(2, 2rem);
+		}
+
+		@include m.desktop {
+			@include m.grid(4, 2rem);
+		}
+	}
+}
+
+.location {
+	&__image {
+		border-radius: 1rem;
+	}
+	&__name {
+		font-size: 1.8rem;
+	}
+}
